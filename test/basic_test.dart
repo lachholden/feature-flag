@@ -7,9 +7,47 @@ void main() {
     final Feature<BinaryFeatureState> basicFeature = Feature<BinaryFeatureState>(
       name: 'Basic feature',
       defaultState: BinaryFeatureState.disabled,
-      decisionSources: [],
+      decisionSources: <DecisionFunction<BinaryFeatureState>>[],
     );
 
     expect(basicFeature.disabled, true);
+  });
+
+  test('A decision source\'s state should override the default state', () {
+    final Feature<BinaryFeatureState> basicFeature = Feature<BinaryFeatureState>(
+      name: 'Basic feature',
+      defaultState: BinaryFeatureState.disabled,
+      decisionSources: <DecisionFunction<BinaryFeatureState>>[
+        () => StateResult<BinaryFeatureState>.state(BinaryFeatureState.enabled),
+      ],
+    );
+
+    expect(basicFeature.enabled, true);
+  });
+
+  test('If all decision sources fall through, the default state should be returned', () {
+    final Feature<BinaryFeatureState> basicFeature = Feature<BinaryFeatureState>(
+      name: 'Basic feature',
+      defaultState: BinaryFeatureState.disabled,
+      decisionSources: <DecisionFunction<BinaryFeatureState>>[
+        () => StateResult<BinaryFeatureState>.fallthrough(),
+        () => StateResult<BinaryFeatureState>.fallthrough(),
+      ],
+    );
+
+    expect(basicFeature.disabled, true);
+  });
+
+  test('The first decision source to return a state should be used', () {
+    final Feature<BinaryFeatureState> basicFeature = Feature<BinaryFeatureState>(
+      name: 'Basic feature',
+      defaultState: BinaryFeatureState.disabled,
+      decisionSources: <DecisionFunction<BinaryFeatureState>>[
+        () => StateResult<BinaryFeatureState>.fallthrough(),
+        () => StateResult<BinaryFeatureState>.state(BinaryFeatureState.enabled),
+      ],
+    );
+
+    expect(basicFeature.enabled, true);
   });
 }

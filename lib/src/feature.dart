@@ -30,13 +30,9 @@ class Feature<StateOption> {
   /// the state of the first one to not fall through, or the default value if they all fall through.
   StateOption get state {
     for (final DecisionFunction<StateOption> decision in decisionSources) {
-      final StateOption r = decision().join(
-        (FallthroughResult fallthrough) => null, 
-        (SpecificStateResult<StateOption> result) => result.state,
-      );
-
-      if (r != null) {
-        return r;
+      StateResult<StateOption> r = decision();
+      if (r.isState) {
+        return r.state;
       }
     }
 
@@ -48,10 +44,10 @@ class Feature<StateOption> {
 /// Allows the syntactic sugar `.enabled` and `.disabled` for binary features. 
 extension BinaryShortcuts on Feature<BinaryFeatureState> {
   bool get enabled {
-    return defaultState == BinaryFeatureState.enabled;
+    return state == BinaryFeatureState.enabled;
   }
 
   bool get disabled {
-    return defaultState == BinaryFeatureState.disabled;
+    return state == BinaryFeatureState.disabled;
   }
 }

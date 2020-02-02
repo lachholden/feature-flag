@@ -10,4 +10,3 @@ environment:
 
 dependencies:
   test: ^1.11.1
-  sealed_unions: ^3.0.2+2
