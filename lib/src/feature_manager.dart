@@ -7,7 +7,7 @@ import '../feature_flag.dart';
 class FeatureManager {
   List<Feature<BinaryFeatureState>> _features = [];
 
-  Feature<BinaryFeatureState> registerBinaryFeature(String name, {BinaryFeatureState defaultState, String description}) {
+  Feature<BinaryFeatureState> registerBinaryFeature(String name, {BinaryFeatureState defaultState, String description, List decisionSources}) {
     var newFeature = Feature<BinaryFeatureState>(name: name, defaultState: defaultState);
     _features.add(newFeature);
     return newFeature;

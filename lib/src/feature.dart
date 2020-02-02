@@ -2,12 +2,14 @@ import '../feature_flag.dart';
 
 /// Represents a single feature that can be one of multiple states.
 /// 
-/// The generic parameter `StateOption` should most likely be an enum, like [BinaryFeatureState],
-/// for example.
+/// The feature's state will be of the type `StateOption`.
 class Feature<StateOption> {
   Feature({this.name, this.defaultState});
 
+  /// The name of the feature, which is primarily used for debugging.
   String name;
+
+  /// The default state of the feature, used if all of the feature's [DecisionSource]s fallthrough.
   StateOption defaultState;
 
   StateOption get state {
