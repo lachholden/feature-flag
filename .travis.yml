@@ -3,3 +3,4 @@ dart:
   - stable
 dart_task:
   - dartanalyzer
+  - test

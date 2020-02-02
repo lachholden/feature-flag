@@ -9,4 +9,5 @@ environment:
   sdk: '>=2.6.0 <3.0.0'
 
 dependencies:
+  test: ^1.11.1
   sealed_unions: ^3.0.2+2
