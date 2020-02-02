@@ -2,15 +2,15 @@ import '../feature_flag.dart';
 
 /// Represents a single feature that can be one of multiple states.
 /// 
-/// The generic parameter `State` should most likely be an enum, like [BinaryFeatureState], for
-/// example.
-class Feature<State> {
+/// The generic parameter `StateOption` should most likely be an enum, like [BinaryFeatureState],
+/// for example.
+class Feature<StateOption> {
   Feature({this.name, this.defaultState});
 
   String name;
-  State defaultState;
+  StateOption defaultState;
 
-  State get state {
+  StateOption get state {
     throw UnimplementedError;
   }
 }
