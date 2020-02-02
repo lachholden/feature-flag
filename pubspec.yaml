@@ -5,6 +5,7 @@ repository: 'https://gitlab.com/lachholden/feature-flag'
 issue_tracker: 'https://gitlab.com/lachholden/feature-flag/issues'
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.6.0 <3.0.0'
 
 dependencies:
+  sealed_unions: ^3.0.2+2
