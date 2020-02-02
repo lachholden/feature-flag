@@ -1,10 +1,10 @@
 import '../../feature_flag.dart';
 
 class EnvironmentVariableDecisionSource {
-  StateResult<BinaryFeatureState> Function() fromVariable(String var_name) {
+  StateResult<BinaryFeatureState> Function() fromVariable(String varName) {
     return () {
       // TODO: implement actual logic
-      return StateResult.fallthrough();
+      return StateResult<BinaryFeatureState>.fallthrough();
     };
   }
 }

@@ -8,22 +8,23 @@ enum BinaryFeatureState { enabled, disabled }
 /// `StateOption`.
 ///
 /// Written with the aid of https://resocoder.com/2019/09/16/sealed-unions-in-dart-never-write-an-if-statement-again-kind-of/
-class StateResult<StateOption> extends Union2Impl<_Fallthrough, _State> {
-
-  static final Doublet<_Fallthrough, _State> _factory = const Doublet<_Fallthrough, _State>();
-
-  StateResult._(Union2<_Fallthrough, _State> union): super(union);
+class StateResult<StateOption> extends Union2Impl<FallthroughResult, SpecificStateResult<StateOption>> {
+  StateResult._(Union2<FallthroughResult, SpecificStateResult<StateOption>> union): super(union);
 
   factory StateResult.fallthrough() => 
-    StateResult._(_factory.first(_Fallthrough()));
+    StateResult<StateOption>._(_factory.first(FallthroughResult()) as Union2<FallthroughResult,SpecificStateResult<StateOption>>);
 
   factory StateResult.state(StateOption state) =>
-    StateResult._(_factory.second(_State(state)));
+    StateResult<StateOption>._(_factory.second(SpecificStateResult<StateOption>(state)) as Union2<FallthroughResult,SpecificStateResult<StateOption>>);
+
+  static const Doublet<FallthroughResult, SpecificStateResult<dynamic>> _factory = Doublet<FallthroughResult, SpecificStateResult<dynamic>>();
 }
 
-class _Fallthrough {}
+/// Represents a result that should fallthrough, that is defer decision making to another source.
+class FallthroughResult {}
 
-class _State<StateOption> {
-  _State(this.state);
+/// Represents a result that is a specific state of type `StateOption`. 
+class SpecificStateResult<StateOption> {
+  SpecificStateResult(this.state);
   final StateOption state;
 }

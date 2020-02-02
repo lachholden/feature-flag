@@ -1,11 +1,8 @@
 import 'package:feature_flag/feature_flag.dart';
 
-// Create the feature manager
-final FeatureManager featureManager = FeatureManager();
-
 // Register the features
-final puppyParty = featureManager.registerBinaryFeature(
-  'puppyParty',
+final Feature<BinaryFeatureState> puppyParty = Feature<BinaryFeatureState>(
+  name: 'puppyParty',
   defaultState: BinaryFeatureState.enabled,
 );
 
