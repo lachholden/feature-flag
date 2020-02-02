@@ -1,9 +1,9 @@
 name: feature_flag
 version: '0.0.1-dev'
 description: Provides feature flags for you to use to enable/disable features by a variety of criteria.
-repository: 'https://gitlab.com/lachholden/feature-flag'
-homepage: 'https://gitlab.com/lachholden/feature-flag'
-issue_tracker: 'https://gitlab.com/lachholden/feature-flag/issues'
+repository: 'https://github.com/lachholden/feature-flag'
+homepage: 'https://github.com/lachholden/feature-flag'
+issue_tracker: 'https://github.com/lachholden/feature-flag/issues'
 
 environment:
   sdk: '>=2.6.0 <3.0.0'
