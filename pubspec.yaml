@@ -1,6 +1,6 @@
 name: feature_flag
-version: '0.0.1-dev'
-description: Provides feature flags for you to use to enable/disable features by a variety of criteria.
+version: '0.1.0'
+description: Provides feature flags that can be enabled and disabled by a variety of methods..
 repository: 'https://github.com/lachholden/feature-flag'
 homepage: 'https://github.com/lachholden/feature-flag'
 issue_tracker: 'https://github.com/lachholden/feature-flag/issues'
