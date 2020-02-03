@@ -9,7 +9,7 @@ final Feature<BinaryFeatureState> puppyParty = Feature<BinaryFeatureState>(
   name: 'puppyParty',
   defaultState: BinaryFeatureState.enabled,
   decisionSources: <StateResult<BinaryFeatureState> Function()>[
-    envVarDecisionSource.fromVariable('ENABLE_PUPPIES'),
+    envVarDecisionSource.checkVariable('ENABLE_PUPPIES'),
   ],
 );
 
