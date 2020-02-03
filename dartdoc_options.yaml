@@ -1,0 +1,5 @@
+dartdoc:
+  categories:
+    "Decision Sources":
+      markdown: doc/decision-sources.md
+      name: "Decision Sources"

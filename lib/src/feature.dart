@@ -4,11 +4,11 @@ typedef StateResult<T> DecisionFunction<T>();
 
 /// Represents a single feature that can be one of multiple states.
 /// 
-/// The feature's state will be of the type `StateOption`. The feature's state is decided when
-/// accessed by a list of [DecisionFunction]s evaluated in turn. The result of the first 
-/// [DecisionFunction] in [decisionSources] that returns a [SpecificStateResult] is returned as the
-/// feature's state. If all [decisionSources] return a [FallthroughResult], then [defaultState] is
-/// returned instead.
+/// The feature's state will be of the type `StateOption`. The feature's state, when accessed, is
+/// decided by a list of [DecisionFunction]s evaluated in turn. The result of the first 
+/// [DecisionFunction] in [decisionSources] that returns a [StateResult]`.state(...)` is returned as
+/// the feature's state. If all [decisionSources] return a [StateResult]`.fallthrough()`, then 
+/// [defaultState] is returned instead.
 /// 
 /// The most common form of this class is [Feature<BinaryFeatureState>], which represents a feature
 /// that is either enabled or disabled.
@@ -20,7 +20,8 @@ class Feature<StateOption> {
 
   /// The list of decision sources to consider when deciding the state of the feature.
   /// 
-  /// The feature's state is the return value of the first source to return a [SpecificStateResult].
+  /// The feature's state is the return value of the first source to return a
+  /// [StateResult]`.state(...)` result.
   List<DecisionFunction<StateOption>> decisionSources;
 
   /// The default state of the feature, used if all of the feature's decision sources fallthrough.
