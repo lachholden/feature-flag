@@ -24,7 +24,8 @@ class StateResult<StateOption> {
 
   /// Provided this is a state result, get the specific state.
   StateOption get state {
-    assert(_isState, 'You must check that the state result is not a fallthrough!');
+    assert(
+        _isState, 'You must check that the state result is not a fallthrough!');
     return _state;
   }
 }

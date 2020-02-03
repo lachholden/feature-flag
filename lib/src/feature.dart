@@ -3,13 +3,13 @@ import '../feature_flag.dart';
 typedef StateResult<T> DecisionFunction<T>();
 
 /// Represents a single feature that can be one of multiple states.
-/// 
+///
 /// The feature's state will be of the type `StateOption`. The feature's state, when accessed, is
-/// decided by a list of [DecisionFunction]s evaluated in turn. The result of the first 
+/// decided by a list of [DecisionFunction]s evaluated in turn. The result of the first
 /// [DecisionFunction] in [decisionSources] that returns a [StateResult]`.state(...)` is returned as
-/// the feature's state. If all [decisionSources] return a [StateResult]`.fallthrough()`, then 
+/// the feature's state. If all [decisionSources] return a [StateResult]`.fallthrough()`, then
 /// [defaultState] is returned instead.
-/// 
+///
 /// The most common form of this class is [Feature<BinaryFeatureState>], which represents a feature
 /// that is either enabled or disabled. It's recommended that `StateOption` be an enum, as this
 /// ensures switch statements when used for control flow are exhaustive.
@@ -20,7 +20,7 @@ class Feature<StateOption> {
   String name;
 
   /// The list of decision sources to consider when deciding the state of the feature.
-  /// 
+  ///
   /// The feature's state is the return value of the first source to return a
   /// [StateResult]`.state(...)` result.
   List<DecisionFunction<StateOption>> decisionSources;
@@ -46,7 +46,7 @@ class Feature<StateOption> {
   }
 }
 
-/// Allows the syntactic sugar `.enabled` and `.disabled` for binary features. 
+/// Allows the syntactic sugar `.enabled` and `.disabled` for binary features.
 extension BinaryShortcuts on Feature<BinaryFeatureState> {
   bool get enabled {
     return state == BinaryFeatureState.enabled;
