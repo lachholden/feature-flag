@@ -59,7 +59,7 @@ final EnvironmentVariableDecisionSource envVarDecisionSource = EnvironmentVariab
 final Feature<BinaryFeatureState> puppyParty = Feature<BinaryFeatureState>(
   name: 'puppyParty',
   defaultState: BinaryFeatureState.disabled,
-  decisionSources: <StateResult<BinaryFeatureState> Function()>[
+  decisionSources: <DecisionFunction<BinaryFeatureState>>[
     envVarDecisionSource.checkVariable('ENABLE_PUPPIES'),
   ],
 );
