@@ -31,6 +31,9 @@ class Feature<StateOption> {
   /// Get the state of the feature by evaluating each of the decision sources in turn and returning
   /// the state of the first one to not fall through, or the default value if they all fall through.
   StateOption get state {
+    // So there's no error if no sources were specified.
+    decisionSources = decisionSources ?? <DecisionFunction<StateOption>>[];
+
     for (final DecisionFunction<StateOption> decision in decisionSources) {
       final StateResult<StateOption> r = decision();
       if (r.isState) {

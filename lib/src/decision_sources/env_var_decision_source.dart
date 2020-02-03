@@ -15,7 +15,7 @@ class EnvironmentVariableDecisionSource {
   /// * the decision function falls through
   DecisionFunction<BinaryFeatureState> checkVariable(String varName) {
     return () {
-      final String variable = Platform.environment[varName].toUpperCase();
+      final String variable = (Platform.environment[varName] ?? '').toUpperCase();
       switch (variable) {
         case 'TRUE':
         case 'T':

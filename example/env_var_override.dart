@@ -1,5 +1,4 @@
 import 'package:feature_flag/feature_flag.dart';
-import 'package:feature_flag/src/decision_sources/env_var_decision_source.dart';
 
 // Create the decision source
 final EnvironmentVariableDecisionSource envVarDecisionSource = EnvironmentVariableDecisionSource();
@@ -7,7 +6,7 @@ final EnvironmentVariableDecisionSource envVarDecisionSource = EnvironmentVariab
 // Register the features
 final Feature<BinaryFeatureState> puppyParty = Feature<BinaryFeatureState>(
   name: 'puppyParty',
-  defaultState: BinaryFeatureState.enabled,
+  defaultState: BinaryFeatureState.disabled,
   decisionSources: <StateResult<BinaryFeatureState> Function()>[
     envVarDecisionSource.checkVariable('ENABLE_PUPPIES'),
   ],
