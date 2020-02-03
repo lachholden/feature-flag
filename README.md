@@ -44,7 +44,7 @@ Yay! A puppy party!
 ```
 
 ## Going Further
-Features can be supercharged through the use of *decision sources*, which allow the decisions regarding the state of a feature to be influenced by a variety of sources. For example, you could have a feature disabled by default, except it's enabled when a specific environment variable is set or when a web API returns a certain response or after a certain date has passed, or any combination of these in priority order.
+Features can be supercharged through the use of *decision sources*, which allow the decisions regarding the state of a feature to be influenced by a variety of sources. For example, you could have a feature disabled by default, except it's enabled when a specific environment variable is set, or when a web API returns a certain response, or after a certain date has passed, or any combination of these in priority order.
 
 Extending the above example to load feature state from an environment variable could look like:
 
@@ -85,3 +85,5 @@ nothing to see here...
 $ ENABLE_PUPPIES=true main.dart
 Yay! A puppy party!
 ```
+
+If multiple decision sources are provided for a certain feature, then the *first* one in the list to return a value (and not fall through) is used as the feature's state.
