@@ -80,10 +80,10 @@ void main() {
 $ dart main.dart
 nothing to see here...
 
-$ ENABLE_PUPPIES=false main.dart
+$ ENABLE_PUPPIES=false dart main.dart
 nothing to see here...
 
-$ ENABLE_PUPPIES=true main.dart
+$ ENABLE_PUPPIES=true dart main.dart
 Yay! A puppy party!
 ```
 
