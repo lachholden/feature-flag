@@ -11,7 +11,8 @@ typedef StateResult<T> DecisionFunction<T>();
 /// [defaultState] is returned instead.
 /// 
 /// The most common form of this class is [Feature<BinaryFeatureState>], which represents a feature
-/// that is either enabled or disabled.
+/// that is either enabled or disabled. It's recommended that `StateOption` be an enum, as this
+/// ensures switch statements when used for control flow are exhaustive.
 class Feature<StateOption> {
   Feature({this.name, this.defaultState, this.decisionSources});
 
@@ -31,7 +32,7 @@ class Feature<StateOption> {
   /// the state of the first one to not fall through, or the default value if they all fall through.
   StateOption get state {
     for (final DecisionFunction<StateOption> decision in decisionSources) {
-      StateResult<StateOption> r = decision();
+      final StateResult<StateOption> r = decision();
       if (r.isState) {
         return r.state;
       }

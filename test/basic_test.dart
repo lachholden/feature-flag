@@ -50,4 +50,25 @@ void main() {
 
     expect(basicFeature.enabled, true);
   });
+
+  test('After a state is found, further decision sources should not be evaluated', () {
+    bool evalOne = false;
+    bool evalTwo = false;
+    bool evalThree = false;
+
+    final Feature<BinaryFeatureState> basicFeature = Feature<BinaryFeatureState>(
+      name: 'Basic feature',
+      defaultState: BinaryFeatureState.disabled,
+      decisionSources: <DecisionFunction<BinaryFeatureState>>[
+        () { evalOne = true; return StateResult<BinaryFeatureState>.fallthrough(); },
+        () { evalTwo = true; return StateResult<BinaryFeatureState>.state(BinaryFeatureState.enabled); },
+        () { evalThree = true; return StateResult<BinaryFeatureState>.fallthrough(); },
+      ],
+    );
+
+    expect(basicFeature.enabled, true);
+    expect(evalOne, true);
+    expect(evalTwo, true);
+    expect(evalThree, false);
+  });
 }
