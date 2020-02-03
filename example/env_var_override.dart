@@ -1,7 +1,8 @@
 import 'package:feature_flag/feature_flag.dart';
 
 // Create the decision source
-final EnvironmentVariableDecisionSource envVarDecisionSource = EnvironmentVariableDecisionSource();
+final EnvironmentVariableDecisionSource envVarDecisionSource =
+    EnvironmentVariableDecisionSource();
 
 // Register the features
 final Feature<BinaryFeatureState> puppyParty = Feature<BinaryFeatureState>(

@@ -1,5 +1,5 @@
 name: feature_flag
-version: '0.1.0'
+version: '0.1.1'
 description: Provides feature flags that can be enabled and disabled by a variety of methods..
 repository: 'https://github.com/lachholden/feature-flag'
 homepage: 'https://github.com/lachholden/feature-flag'
