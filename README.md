@@ -1,6 +1,7 @@
 # Feature Flag
 <p align="center">
   <a href="https://travis-ci.org/lachholden/feature-flag"><img alt="Travis (.org) branch" src="https://img.shields.io/travis/lachholden/feature-flag/master"></a>
+  <a href="https://pub.dev/packages/feature_flag/"><img alt="Pub Version" src="https://img.shields.io/pub/v/feature_flag?color=blue&logo=dart&logoColor=%2300A4E4"></a>
 <p>
 
 A [dart](https://dart.dev) package that provides feature flags that can be enabled and disabled by a variety of methods.
